@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var num = 2
     
     var body: some View {
-        VStack {
-            Button {
-                print("Edit Button was tapped!")
-            } label: {
-                Image(systemName: "pencil")
-            }
+        VStack(alignment: .center, spacing: 20) {
+            TextField("Any number", value: $num, format: .number)
+            Button("Click me", action: executeDelete)
         }
         
     }
     
     func executeDelete() {
-        print("Now deleting")
+        num *= 2
+        
+        print(num)
+        
     }
     
 }
