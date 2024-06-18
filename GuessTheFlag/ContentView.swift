@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var num = 2
+    @State private var showingAlert = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
-            TextField("Any number", value: $num, format: .number)
-            Button("Click me", action: executeDelete)
+        Button("Show Alert") {
+            showingAlert = true
         }
-        
-    }
-    
-    func executeDelete() {
-        num *= 2
-        
-        print(num)
+        .alert("Important message", isPresented: $showingAlert) {
+            Button("Delete", role: .destructive) {}
+            Button("Cancel", role: .cancel) {}
+        } message : {
+            Text("Please read this")
+        }
         
     }
     
